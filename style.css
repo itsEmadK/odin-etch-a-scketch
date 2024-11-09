@@ -9,6 +9,8 @@
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 2px;
+    background-color: black;
+    border: 2px black solid;
 }
 
 .square-cell {
