@@ -33,3 +33,8 @@ body {
     flex-direction: column;
     gap: 20px;
 }
+
+
+.side-menu {
+    background-color: #202020;
+}
