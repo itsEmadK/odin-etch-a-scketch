@@ -1,4 +1,5 @@
 let dimension = 50; //Must take it from input later
+let isEraser = false;
 const cell = document.createElement("div");
 cell.classList.add("square-cell");
 cell.style.width = `calc(100%*(1/${dimension}) - 1px)`;
@@ -30,4 +31,10 @@ buttons.forEach((btn) => {
     btn.addEventListener("mouseleave", () => {
         btn.classList.toggle("hovered");
     })
+})
+
+const toggleEraserButton = document.querySelector("#toggle-eraser-btn");
+toggleEraserButton.addEventListener("click", () => {
+    isEraser = !isEraser;
+    toggleEraserButton.classList.toggle("enabled") //TODO: Fix the hardcoded "enable" later.
 })
