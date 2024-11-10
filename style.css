@@ -45,6 +45,7 @@ body {
     padding: 20px;
     width: 250px;
     border-radius: 5px;
+    align-self: start;
 }
 
 .background-colors-subtitle,
