@@ -40,4 +40,6 @@ body {
 
 .side-menu {
     background-color: #202020;
+    padding: 20px;
+    border-radius: 5px;
 }
