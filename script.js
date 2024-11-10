@@ -9,6 +9,7 @@ const TOGGLE_RAINBOW_BTN_ID = "toggle-rainbow-btn";
 const TOGGLE_SHADING_BTN_ID = "toggle-shading-btn";
 const TOGGLE_LIGHTEN_BTN_ID = "toggle-lighten-btn";
 const TOGGLE_GRID_LINES_BTN = "toggle-grid-lines-btn";
+const CHANGE_GRID_SIZE_BTN_ID = "change-grid-size-btn";
 
 
 const cell = document.createElement("div");
@@ -73,8 +74,32 @@ buttons.forEach((btn) => {
                 grid.classList.toggle("show-left-border-gray");
                 grid.classList.toggle("show-bottom-border-gray");
                 break;
+            case CHANGE_GRID_SIZE_BTN_ID:
+                const newDimension = prompt("Please enter the new grids dimension:");
+                changeGridSize(newDimension);
+                break;
             default:
                 break;
         }
     })
 })
+
+function changeGridSize(newDimension) {
+    const oldCellClassList = cells[0].classList; //Save any old state if there is any (like grid lines).
+
+    //I prefer to update 'cells' array and then update the grid using the nodes of this
+    //array for consistency.
+    cells.forEach((c) => {
+        grid.removeChild(c);
+    });
+    cells = [];
+    let newCell = document.createElement("div");
+    newCell.classList = oldCellClassList;
+    newCell.style.width = `calc(100%*(1/${newDimension}))`;
+    for (let i = 0; i < newDimension * newDimension; i++) {
+        cells.push(newCell.cloneNode(false));
+    }
+    cells.forEach((c) => {
+        grid.appendChild(c);
+    })
+}
