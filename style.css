@@ -86,3 +86,8 @@ body {
 .selected.color-item {
     border: 1px solid #3ea6ff;
 }
+
+.hovered.color-item {
+    border: 1px solid #4d4f51;
+    opacity: 50%;
+}
