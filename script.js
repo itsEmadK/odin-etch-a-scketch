@@ -12,13 +12,18 @@ const TOGGLE_GRID_LINES_BTN = "toggle-grid-lines-btn";
 
 
 const cell = document.createElement("div");
+let cells = [];
 cell.classList.add("square-cell");
 cell.style.width = `calc(100%*(1/${dimension}))`;
 
 const grid = document.querySelector(".grid");
 for (let i = 0; i < dimension * dimension; i++) {
-    grid.appendChild(cell.cloneNode(false));
+    cells.push(cell.cloneNode(false));
 }
+
+cells.forEach((c)=>{
+    grid.appendChild(c);
+})
 
 grid.addEventListener("mouseover", (event) => {
     if (![...event.target.classList].includes("grid")) {
@@ -61,7 +66,6 @@ buttons.forEach((btn) => {
                 isLightening = !isLightening;
                 break;
             case TOGGLE_GRID_LINES_BTN:
-                const cells = document.querySelectorAll(".square-cell");
                 cells.forEach((cell) => {
                     cell.classList.toggle("show-right-border-gray");
                     cell.classList.toggle("show-top-border-gray");
