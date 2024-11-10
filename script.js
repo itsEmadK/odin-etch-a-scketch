@@ -9,5 +9,7 @@ for (let i = 0; i < dimension * dimension; i++) {
 }
 
 gridContainer.addEventListener("mouseover", (event) => {
-    event.target.style.backgroundColor = "black";
+    if (![...event.target.classList].includes("grid-container")) {
+        event.target.style.backgroundColor = "black";
+    }
 })
