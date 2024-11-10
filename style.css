@@ -15,6 +15,8 @@ h1 {
     color: #3ea6ff;
     font-family: Ubuntu, sans-serif;
     font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 40px;
 }
 
 .grid-container {
