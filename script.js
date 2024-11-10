@@ -75,6 +75,7 @@ buttons.forEach((btn) => {
                 grid.classList.toggle("show-bottom-border-gray");
                 break;
             case CHANGE_GRID_SIZE_BTN_ID:
+                //This button doesn't toggle anything, but rather requests an action.
                 event.target.classList.toggle("enabled");
                 const newDimension = prompt("Please enter the new grids dimension:");
                 if (newDimension !== null) {
