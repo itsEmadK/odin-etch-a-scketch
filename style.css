@@ -23,3 +23,8 @@
 .main-container {
     display: flex;
 }
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+}
