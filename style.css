@@ -2,6 +2,7 @@
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 body {
@@ -46,7 +47,6 @@ body {
 
 .background-colors-subtitle,
 .pen-colors-subtitle {
-    font-family: sans-serif;
     color: #3ea6ff;
     font-weight: 600;
     margin-bottom: 20px;
