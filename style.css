@@ -43,3 +43,10 @@ body {
     padding: 20px;
     border-radius: 5px;
 }
+
+.background-colors-subtitle,
+.pen-colors-subtitle {
+    font-family: sans-serif;
+    color: #3ea6ff;
+    font-weight: 600;
+}
