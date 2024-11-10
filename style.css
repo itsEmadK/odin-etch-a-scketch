@@ -26,6 +26,8 @@ body {
 
 .main-container {
     display: flex;
+    justify-content: center;
+    gap: 100px;
 }
 
 .buttons-container {
