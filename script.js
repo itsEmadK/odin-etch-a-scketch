@@ -22,7 +22,7 @@ for (let i = 0; i < dimension * dimension; i++) {
     cells.push(cell.cloneNode(false));
 }
 
-cells.forEach((c)=>{
+cells.forEach((c) => {
     grid.appendChild(c);
 })
 
@@ -76,7 +76,15 @@ buttons.forEach((btn) => {
                 break;
             case CHANGE_GRID_SIZE_BTN_ID:
                 const newDimension = prompt("Please enter the new grids dimension:");
-                changeGridSize(newDimension);
+                if (newDimension !== null) {
+                    if (isNaN(+newDimension) || +newDimension <= 0) {
+                        alert("Stop being a clown and enter a positive integer")
+                    } else if (+newDimension > 100) {
+                        alert("Dude, the limit is 100, what were you gonna do with all those cells anyway?")
+                    } else {
+                        changeGridSize(newDimension);
+                    }
+                }
                 break;
             default:
                 break;
