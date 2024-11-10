@@ -19,15 +19,18 @@ h1 {
     margin-bottom: 40px;
 }
 
+.grid-container {
+    width: 600px;
+    padding: 20px;
+    border-radius: 4px;
+    background-color: #202020;
+}
+
 .grid {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
     gap: 1px;
-    background-color: #202020;
-    width: 600px;
-    padding: 20px;
-    border-radius: 4px;
 }
 
 .square-cell {
