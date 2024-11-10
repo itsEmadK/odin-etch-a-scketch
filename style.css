@@ -29,8 +29,6 @@ h1 {
 .grid {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
-    gap: 1px;
 }
 
 .square-cell {
@@ -120,4 +118,19 @@ h1 {
 
 .hovered.enabled.btn {
     background-color: #95c1ee;
+}
+
+
+.show-left-border-gray {
+    border-left: 1px solid gray;
+}
+
+.show-right-border-gray {
+    border-right: 1px solid gray;
+}
+.show-top-border-gray {
+    border-top: 1px solid gray;
+}
+.show-bottom-border-gray {
+    border-bottom: 1px solid gray;
 }

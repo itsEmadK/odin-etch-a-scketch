@@ -8,18 +8,19 @@ const TOGGLE_ERASER_BTN_ID = "toggle-eraser-btn";
 const TOGGLE_RAINBOW_BTN_ID = "toggle-rainbow-btn";
 const TOGGLE_SHADING_BTN_ID = "toggle-shading-btn";
 const TOGGLE_LIGHTEN_BTN_ID = "toggle-lighten-btn";
+const TOGGLE_GRID_LINES_BTN = "toggle-grid-lines-btn";
 
 
 const cell = document.createElement("div");
 cell.classList.add("square-cell");
-cell.style.width = `calc(100%*(1/${dimension}) - 1px)`;
+cell.style.width = `calc(100%*(1/${dimension}))`;
 
-const gridContainer = document.querySelector(".grid");
+const grid = document.querySelector(".grid");
 for (let i = 0; i < dimension * dimension; i++) {
-    gridContainer.appendChild(cell.cloneNode(false));
+    grid.appendChild(cell.cloneNode(false));
 }
 
-gridContainer.addEventListener("mouseover", (event) => {
+grid.addEventListener("mouseover", (event) => {
     if (![...event.target.classList].includes("grid")) {
         event.target.style.backgroundColor = "black";
     }
@@ -58,6 +59,15 @@ buttons.forEach((btn) => {
                 break;
             case TOGGLE_LIGHTEN_BTN_ID:
                 isLightening = !isLightening;
+                break;
+            case TOGGLE_GRID_LINES_BTN:
+                const cells = document.querySelectorAll(".square-cell");
+                cells.forEach((cell) => {
+                    cell.classList.toggle("show-right-border-gray");
+                    cell.classList.toggle("show-top-border-gray");
+                });
+                grid.classList.toggle("show-left-border-gray");
+                grid.classList.toggle("show-bottom-border-gray");
                 break;
             default:
                 break;
