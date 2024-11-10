@@ -10,6 +10,13 @@ body {
     padding: 20px;
 }
 
+h1 {
+    text-align: center;
+    color: #3ea6ff;
+    font-family: Ubuntu, sans-serif;
+    font-size: 40px;
+}
+
 .grid-container {
     display: flex;
     flex-wrap: wrap;
