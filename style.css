@@ -91,3 +91,10 @@ body {
     border: 1px solid #4d4f51;
     opacity: 50%;
 }
+
+.enabled.btn {
+    background-color: #3ea6ff;
+    border: 1px solid #3ea6ff;
+    color: #202020;
+    font-weight: 600;
+}
