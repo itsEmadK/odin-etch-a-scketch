@@ -67,3 +67,9 @@ body {
     align-items: center;
 }
 
+.color-item {
+    width: 20%;
+    height: auto;
+    aspect-ratio: 1/1;
+    border-radius: 2px;
+}
