@@ -2,10 +2,13 @@ let dimension = 50; //Must take it from input later
 let isEraser = false;
 let isRainbow = false;
 let isShading = false;
+let isLightening = false;
 
 const TOGGLE_ERASER_BTN_ID = "toggle-eraser-btn";
 const TOGGLE_RAINBOW_BTN_ID = "toggle-rainbow-btn";
 const TOGGLE_SHADING_BTN_ID = "toggle-shading-btn";
+const TOGGLE_LIGHTEN_BTN_ID = "toggle-lighten-btn";
+
 
 const cell = document.createElement("div");
 cell.classList.add("square-cell");
@@ -52,6 +55,9 @@ buttons.forEach((btn) => {
                 break;
             case TOGGLE_SHADING_BTN_ID:
                 isShading = !isShading;
+                break;
+            case TOGGLE_LIGHTEN_BTN_ID:
+                isLightening = !isLightening;
                 break;
             default:
                 break;
