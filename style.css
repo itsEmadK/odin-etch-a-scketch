@@ -49,6 +49,7 @@ body {
 .pen-colors-subtitle {
     color: #3ea6ff;
     font-weight: 600;
+    flex-shrink: 0;
 }
 
 .btn {
@@ -62,9 +63,15 @@ body {
 .pen-colors-container,
 .background-colors-container {
     display: flex;
-    flex-wrap: wrap;
     align-items: center;
     margin-bottom: 20px;
+}
+
+.color-items-container {
+    flex: 1;
+    display: flex;
+    gap: 4px;
+    flex-wrap: wrap;
 }
 
 .color-item {
