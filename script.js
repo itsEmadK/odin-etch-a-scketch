@@ -1,6 +1,9 @@
 let dimension = 50; //Must take it from input later
 let isEraser = false;
+let isRainbow = false;
+
 const TOGGLE_ERASER_BTN_ID = "toggle-eraser-btn";
+const TOGGLE_RAINBOW_BTN_ID = "toggle-rainbow-btn";
 
 const cell = document.createElement("div");
 cell.classList.add("square-cell");
@@ -42,6 +45,9 @@ buttons.forEach((btn) => {
             case TOGGLE_ERASER_BTN_ID:
                 isEraser = !isEraser;
                 break;
+            case TOGGLE_RAINBOW_BTN_ID:
+                isRainbow = !isRainbow;
+                break
             default:
                 break;
         }
