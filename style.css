@@ -82,3 +82,7 @@ body {
     aspect-ratio: 1/1;
     border-radius: 2px;
 }
+
+.selected.color-item {
+    border: 1px solid #3ea6ff;
+}
