@@ -13,3 +13,10 @@ gridContainer.addEventListener("mouseover", (event) => {
         event.target.style.backgroundColor = "black";
     }
 })
+
+
+const colors = ["black", "blue", "red", "green", "gold"];
+const colorItems = [...document.querySelectorAll(".color-item")];
+for (let i = 0; i < 5; i++) { //TODO: remove the hardcoded value 5.
+    colorItems[i].style.backgroundColor = colors[i];
+}
