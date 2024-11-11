@@ -4,6 +4,7 @@ const TOGGLE_SHADING_BTN_ID = "toggle-shading-btn";
 const TOGGLE_LIGHTEN_BTN_ID = "toggle-lighten-btn";
 const TOGGLE_GRID_LINES_BTN = "toggle-grid-lines-btn";
 const CHANGE_GRID_SIZE_BTN_ID = "change-grid-size-btn";
+const CLEAR_GRID_BTN_ID = "clear-grid-btn";
 
 let initialDimension = 10; //Must take it from input later
 let isEraser = false;
@@ -94,6 +95,11 @@ buttons.forEach((btn) => {
                     }
                 }
                 break;
+            case CLEAR_GRID_BTN_ID:
+                //This button doesn't toggle anything, but rather requests an action.
+                event.target.classList.toggle("enabled");
+                clearGrid();
+                break;
             default:
                 break;
         }
@@ -122,7 +128,7 @@ function selectColorItem(color) {
     penColor = color;
 }
 
-function initColorItems(){
+function initColorItems() {
     for (let i = 0; i < 5; i++) { //TODO: remove the hardcoded value 5.
         colorItems[i].style.backgroundColor = colors[i];
     }
@@ -137,4 +143,10 @@ function initGridCells(initialDimension) {
     for (let i = 0; i < initialDimension * initialDimension; i++) {
         grid.appendChild(cell.cloneNode(false));
     }
+}
+
+function clearGrid() {
+    grid.childNodes.forEach((cell) => {
+        cell.style.backgroundColor = "white";
+    })
 }
