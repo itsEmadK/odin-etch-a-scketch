@@ -100,6 +100,10 @@ h1 {
     border: 1px solid #3ea6ff;
 }
 
+.selected.hovered.color-item {
+    border: 1px solid #3ea6ff;
+}
+
 .hovered.color-item {
     border: 1px solid #FFFFFF;
 }
