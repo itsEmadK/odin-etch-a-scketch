@@ -57,8 +57,7 @@ buttons.forEach((btn) => {
 buttons.forEach((btn) => {
     btn.addEventListener("click", (event) => {
         event.target.classList.toggle("enabled");
-        //After the click, the mouse button is released and therefore the
-        //mousedown effect should be removed.
+        //Remove the mousedown effect after the mouse is released.
         event.target.classList.remove("mousedown");
         switch (event.target.id) {
             case TOGGLE_ERASER_BTN_ID:
