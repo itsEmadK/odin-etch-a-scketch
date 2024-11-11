@@ -101,8 +101,7 @@ h1 {
 }
 
 .hovered.color-item {
-    border: 1px solid #4d4f51;
-    opacity: 50%;
+    border: 1px solid #FFFFFF;
 }
 
 .enabled.btn {
