@@ -1,7 +1,6 @@
 const TOGGLE_ERASER_BTN_ID = "toggle-eraser-btn";
 const TOGGLE_RAINBOW_BTN_ID = "toggle-rainbow-btn";
 const TOGGLE_SHADING_BTN_ID = "toggle-shading-btn";
-const TOGGLE_LIGHTEN_BTN_ID = "toggle-lighten-btn";
 const TOGGLE_GRID_LINES_BTN = "toggle-grid-lines-btn";
 const CHANGE_GRID_SIZE_BTN_ID = "change-grid-size-btn";
 const CLEAR_GRID_BTN_ID = "clear-grid-btn";
@@ -10,7 +9,6 @@ let initialDimension = 10; //Must take it from input later
 let isEraser = false;
 let isRainbow = false;
 let isShading = false;
-let isLightening = false;
 let penColor = "black";
 
 const grid = document.querySelector(".grid");
@@ -79,9 +77,6 @@ buttons.forEach((btn) => {
                 break;
             case TOGGLE_SHADING_BTN_ID:
                 isShading = !isShading;
-                break;
-            case TOGGLE_LIGHTEN_BTN_ID:
-                isLightening = !isLightening;
                 break;
             case TOGGLE_GRID_LINES_BTN:
                 document.querySelectorAll(".square-cell").forEach((cell) => {
