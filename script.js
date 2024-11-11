@@ -35,10 +35,7 @@ grid.addEventListener("mouseover", (event) => {
 
 const colors = ["black", "blue", "red", "green", "gold"];
 const colorItems = [...document.querySelectorAll(".color-item")];
-for (let i = 0; i < 5; i++) { //TODO: remove the hardcoded value 5.
-    colorItems[i].style.backgroundColor = colors[i];
-}
-selectColorItem("black");
+initColorItems();
 
 colorItems.forEach((colorItem) => {
     colorItem.addEventListener("mouseenter", () => {
@@ -147,5 +144,8 @@ function selectColorItem(color) {
 }
 
 function initColorItems(){
-
+    for (let i = 0; i < 5; i++) { //TODO: remove the hardcoded value 5.
+        colorItems[i].style.backgroundColor = colors[i];
+    }
+    selectColorItem("black");
 }
