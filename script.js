@@ -18,7 +18,12 @@ grid.addEventListener("mouseover", (event) => {
     if (![...event.target.classList].includes("grid")) {
         if (isEraser) {
             event.target.style.backgroundColor = "white";
-        } else if (isShading){
+        } else if (isRainbow) {
+            const red = Math.random() * 100;
+            const green = Math.random() * 100;
+            const blue = Math.random() * 100;
+            event.target.style.backgroundColor = `rgb(${red}%,${green}%,${blue}%)`;
+        } else if (isShading) {
             const currentOpacity = +event.target.style.opacity;
             if (currentOpacity < 1){
                 event.target.style.opacity = `${currentOpacity + 0.1}`;
