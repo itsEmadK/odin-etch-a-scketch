@@ -20,6 +20,12 @@ grid.addEventListener("mouseover", (event) => {
     if (![...event.target.classList].includes("grid")) {
         if (isEraser) {
             event.target.style.backgroundColor = "white";
+        } else if (isShading){
+            const currentOpacity = +event.target.style.opacity;
+            if (currentOpacity < 1){
+                event.target.style.opacity = `${currentOpacity + 0.1}`;
+            }
+            event.target.style.backgroundColor = penColor;
         } else {
             event.target.style.backgroundColor = penColor;
         }
@@ -152,5 +158,6 @@ function initGridCells(initialDimension) {
 function clearGrid() {
     grid.childNodes.forEach((cell) => {
         cell.style.backgroundColor = "white";
+        cell.style.opacity = "";
     })
 }
