@@ -1,4 +1,4 @@
-let dimension = 10; //Must take it from input later
+let initialDimension = 10; //Must take it from input later
 let isEraser = false;
 let isRainbow = false;
 let isShading = false;
@@ -15,10 +15,10 @@ const CHANGE_GRID_SIZE_BTN_ID = "change-grid-size-btn";
 const cell = document.createElement("div");
 let cells = [];
 cell.classList.add("square-cell");
-cell.style.width = `calc(100%*(1/${dimension}))`;
+cell.style.width = `calc(100%*(1/${initialDimension}))`;
 
 const grid = document.querySelector(".grid");
-for (let i = 0; i < dimension * dimension; i++) {
+for (let i = 0; i < initialDimension * initialDimension; i++) {
     cells.push(cell.cloneNode(false));
 }
 
