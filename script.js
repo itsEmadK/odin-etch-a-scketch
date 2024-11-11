@@ -12,17 +12,16 @@ let isShading = false;
 let isLightening = false;
 let penColor = "black";
 
+const grid = document.querySelector(".grid");
 
 const cell = document.createElement("div");
-let cells = [];
 cell.classList.add("square-cell");
 cell.style.width = `calc(100%*(1/${initialDimension}))`;
 
-const grid = document.querySelector(".grid");
+let cells = [];
 for (let i = 0; i < initialDimension * initialDimension; i++) {
     cells.push(cell.cloneNode(false));
 }
-
 cells.forEach((c) => {
     grid.appendChild(c);
 })
@@ -145,4 +144,8 @@ function selectColorItem(color) {
         }
     })
     penColor = color;
+}
+
+function initColorItems(){
+
 }
