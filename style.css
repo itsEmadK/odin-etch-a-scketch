@@ -29,6 +29,7 @@ h1 {
 .grid {
     display: flex;
     flex-wrap: wrap;
+    background-color: white;
 }
 
 .square-cell {
