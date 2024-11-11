@@ -18,13 +18,9 @@ const cell = document.createElement("div");
 cell.classList.add("square-cell");
 cell.style.width = `calc(100%*(1/${initialDimension}))`;
 
-let cells = [];
 for (let i = 0; i < initialDimension * initialDimension; i++) {
-    cells.push(cell.cloneNode(false));
+    grid.appendChild(cell.cloneNode(false));
 }
-cells.forEach((c) => {
-    grid.appendChild(c);
-})
 
 grid.addEventListener("mouseover", (event) => {
     if (![...event.target.classList].includes("grid")) {
@@ -85,7 +81,7 @@ buttons.forEach((btn) => {
                 isLightening = !isLightening;
                 break;
             case TOGGLE_GRID_LINES_BTN:
-                cells.forEach((cell) => {
+                document.querySelectorAll(".square-cell").forEach((cell) => {
                     cell.classList.toggle("show-right-border-gray");
                     cell.classList.toggle("show-top-border-gray");
                 });
@@ -113,23 +109,14 @@ buttons.forEach((btn) => {
 })
 
 function changeGridSize(newDimension) {
-    const oldCellClassList = cells[0].classList; //Save any old state if there is any (like grid lines).
-
-    //I prefer to update 'cells' array and then update the grid using the nodes of this
-    //array for consistency.
-    cells.forEach((c) => {
-        grid.removeChild(c);
-    });
-    cells = [];
+    const oldCellClassList = grid.firstChild.classList; //Save any old state if there is any (like grid lines).
     let newCell = document.createElement("div");
+    grid.innerHTML = ""; //Remove all old cells.
     newCell.classList = oldCellClassList;
     newCell.style.width = `calc(100%*(1/${newDimension}))`;
     for (let i = 0; i < newDimension * newDimension; i++) {
-        cells.push(newCell.cloneNode(false));
+        grid.appendChild(newCell.cloneNode(false));
     }
-    cells.forEach((c) => {
-        grid.appendChild(c);
-    })
 }
 
 function selectColorItem(color) {
