@@ -39,6 +39,14 @@ for (let i = 0; i < 5; i++) { //TODO: remove the hardcoded value 5.
     colorItems[i].style.backgroundColor = colors[i];
 }
 
+colorItems.forEach((colorItem) => {
+    colorItem.addEventListener("mouseenter",()=>{
+        colorItem.classList.add("hovered");
+    });
+    colorItem.addEventListener("mouseleave",()=>{
+        colorItem.classList.remove("hovered");
+    });
+})
 
 const buttons = [...document.querySelectorAll(".btn")];
 buttons.forEach((btn) => {
