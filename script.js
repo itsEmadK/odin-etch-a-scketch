@@ -18,7 +18,11 @@ initGridCells(initialDimension);
 
 grid.addEventListener("mouseover", (event) => {
     if (![...event.target.classList].includes("grid")) {
-        event.target.style.backgroundColor = penColor;
+        if (isEraser) {
+            event.target.style.backgroundColor = "white";
+        } else {
+            event.target.style.backgroundColor = penColor;
+        }
     }
 })
 
