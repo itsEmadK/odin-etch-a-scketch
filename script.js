@@ -3,6 +3,7 @@ let isEraser = false;
 let isRainbow = false;
 let isShading = false;
 let isLightening = false;
+let penColor = "black";
 
 const TOGGLE_ERASER_BTN_ID = "toggle-eraser-btn";
 const TOGGLE_RAINBOW_BTN_ID = "toggle-rainbow-btn";
@@ -40,12 +41,15 @@ for (let i = 0; i < 5; i++) { //TODO: remove the hardcoded value 5.
 }
 
 colorItems.forEach((colorItem) => {
-    colorItem.addEventListener("mouseenter",()=>{
+    colorItem.addEventListener("mouseenter", () => {
         colorItem.classList.add("hovered");
     });
-    colorItem.addEventListener("mouseleave",()=>{
+    colorItem.addEventListener("mouseleave", () => {
         colorItem.classList.remove("hovered");
     });
+    colorItem.addEventListener("click", () => {
+        selectColorItem(colorItem.style.backgroundColor);
+    })
 })
 
 const buttons = [...document.querySelectorAll(".btn")];
@@ -129,4 +133,15 @@ function changeGridSize(newDimension) {
     cells.forEach((c) => {
         grid.appendChild(c);
     })
+}
+
+function selectColorItem(color) {
+    colorItems.forEach((colorItem) => {
+        if (colorItem.style.backgroundColor === color) {
+            colorItem.classList.add("selected");
+        } else {
+            colorItem.classList.remove("selected");
+        }
+    })
+    penColor = color;
 }
