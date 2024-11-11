@@ -47,12 +47,21 @@ buttons.forEach((btn) => {
     })
     btn.addEventListener("mouseleave", () => {
         btn.classList.toggle("hovered");
+        //Remove the mousedown effect if the user leaves the element
+        //whilst pressing the mouse button.
+        btn.classList.remove("mousedown");
+    })
+    btn.addEventListener("mousedown", () => {
+        btn.classList.add("mousedown");
     })
 })
 
 buttons.forEach((btn) => {
     btn.addEventListener("click", (event) => {
         event.target.classList.toggle("enabled");
+        //After the click, the mouse button is released and therefore the
+        //mousedown effect should be removed.
+        event.target.classList.remove("mousedown");
         switch (event.target.id) {
             case TOGGLE_ERASER_BTN_ID:
                 isEraser = !isEraser;

@@ -112,6 +112,14 @@ h1 {
     font-weight: 600;
 }
 
+.mousedown.hovered.btn {
+    background-color: #2e2d2d;
+}
+
+.mousedown.enabled.hovered.btn {
+    background-color: #88bbe8;
+}
+
 .hovered.btn {
     background-color: #1f1d1d;
 }
