@@ -13,14 +13,7 @@ let isLightening = false;
 let penColor = "black";
 
 const grid = document.querySelector(".grid");
-
-const cell = document.createElement("div");
-cell.classList.add("square-cell");
-cell.style.width = `calc(100%*(1/${initialDimension}))`;
-
-for (let i = 0; i < initialDimension * initialDimension; i++) {
-    grid.appendChild(cell.cloneNode(false));
-}
+initGridCells(initialDimension);
 
 grid.addEventListener("mouseover", (event) => {
     if (![...event.target.classList].includes("grid")) {
@@ -135,4 +128,14 @@ function initColorItems(){
         colorItems[i].style.backgroundColor = colors[i];
     }
     selectColorItem("black");
+}
+
+function initGridCells(initialDimension) {
+    const cell = document.createElement("div");
+    cell.classList.add("square-cell");
+    cell.style.width = `calc(100%*(1/${initialDimension}))`;
+
+    for (let i = 0; i < initialDimension * initialDimension; i++) {
+        grid.appendChild(cell.cloneNode(false));
+    }
 }
