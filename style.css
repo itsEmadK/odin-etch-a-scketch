@@ -27,6 +27,7 @@ h1 {
     padding: 20px;
     border-radius: 4px;
     background-color: #202020;
+    align-self: start;
 }
 
 .grid {
