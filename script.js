@@ -56,6 +56,7 @@ grid.addEventListener("mouseover", (event) => {
             event.target.style.backgroundColor = penColor;
         } else {
             event.target.style.backgroundColor = penColor;
+            event.target.style.opacity = "";
         }
     }
 })
