@@ -77,7 +77,7 @@ buttons.forEach((btn) => {
         event.target.classList.remove("mousedown");
         switch (event.target.id) {
             case TOGGLE_ERASER_BTN_ID:
-                isEraser = !isEraser;
+                toggleEraserButton();
                 break;
             case TOGGLE_RAINBOW_BTN_ID:
                 toggleRainbowButton();
@@ -173,6 +173,20 @@ function toggleRainbowButton() {
     if (isRainbow){
         isEraser = false;
         eraserBtn.classList.remove("enabled");
+        isShading = false;
+        shadingBtn.classList.remove("enabled");
+    }
+}
+
+function toggleEraserButton() {
+    const rainbowBtn = document.querySelector(`#${TOGGLE_RAINBOW_BTN_ID}`);
+    const eraserBtn = document.querySelector(`#${TOGGLE_ERASER_BTN_ID}`);
+    const shadingBtn = document.querySelector(`#${TOGGLE_SHADING_BTN_ID}`);
+    eraserBtn.classList.toggle("enabled");
+    isEraser = !isEraser;
+    if (isEraser){
+        isRainbow = false;
+        rainbowBtn.classList.remove("enabled");
         isShading = false;
         shadingBtn.classList.remove("enabled");
     }
