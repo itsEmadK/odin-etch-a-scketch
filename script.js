@@ -37,7 +37,7 @@ initGridCells(initialDimension);
 grid.addEventListener("mouseover", (event) => {
     if (![...event.target.classList].includes(STYLE_CLASS_GRID)) {
         if (isEraser) {
-            event.target.style.backgroundColor = "white";
+            event.target.style.backgroundColor = COLOR_WHITE;
         } else if (isRainbow) {
             const red = Math.random() * 100;
             const green = Math.random() * 100;
