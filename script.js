@@ -88,16 +88,7 @@ buttons.forEach((btn) => {
                 toggleGridLinesButton();
                 break;
             case CHANGE_GRID_SIZE_BTN_ID:
-                const newDimension = prompt("Please enter the new grids dimension:");
-                if (newDimension !== null) {
-                    if (isNaN(+newDimension) || +newDimension <= 0) {
-                        alert("Stop being a clown and enter a positive integer")
-                    } else if (+newDimension > 100) {
-                        alert("Dude, the limit is 100, what were you gonna do with all those cells anyway?")
-                    } else {
-                        changeGridSize(newDimension);
-                    }
-                }
+                handleGridSizeChangeBtn();
                 break;
             case CLEAR_GRID_BTN_ID:
                 //This button doesn't toggle anything, but rather requests an action.
@@ -207,4 +198,18 @@ function toggleGridLinesButton(){
     });
     grid.classList.toggle("show-left-border-gray");
     grid.classList.toggle("show-bottom-border-gray");
+}
+
+
+function handleGridSizeChangeBtn(){
+    const newDimension = prompt("Please enter the new grids dimension:");
+    if (newDimension !== null) {
+        if (isNaN(+newDimension) || +newDimension <= 0) {
+            alert("Stop being a clown and enter a positive integer")
+        } else if (+newDimension > 100) {
+            alert("Dude, the limit is 100, what were you gonna do with all those cells anyway?")
+        } else {
+            changeGridSize(newDimension);
+        }
+    }
 }
