@@ -56,6 +56,7 @@ grid.addEventListener("mouseover", (event) => {
                 const green = Math.random() * 100;
                 const blue = Math.random() * 100;
                 event.target.style.backgroundColor = `rgb(${red}%,${green}%,${blue}%)`;
+                event.target.style.opacity = "";
             } else if (isShading) {
                 let currentOpacity = event.target.style.opacity;
                 currentOpacity = currentOpacity === '' ? 1 : +currentOpacity; //If no opacity is specified, it means the element has 100% opacity.
