@@ -24,11 +24,14 @@ grid.addEventListener("mouseover", (event) => {
             const blue = Math.random() * 100;
             event.target.style.backgroundColor = `rgb(${red}%,${green}%,${blue}%)`;
         } else if (isShading) {
-            const currentOpacity = +event.target.style.opacity;
-            //the >0 part is because in the default mode, the opacity is not set and
-            //therefore is 0, even when the cell is colored:
-            if (currentOpacity < 1) {
-                event.target.style.opacity = `${currentOpacity + 0.1}`;
+            let currentOpacity = event.target.style.opacity;
+            currentOpacity = currentOpacity === '' ? 1 : +currentOpacity; //If no opacity is specified, it means the element has 100% opacity.
+            let shouldApplyShading =
+                event.target.style.backgroundColor !== penColor || //The element is not colored yet
+                currentOpacity < 1; // and if it is colored, it has room to increase the opacity.
+
+            if (shouldApplyShading) {
+                event.target.style.opacity = `${+event.target.style.opacity + 0.1}`;
             }
             event.target.style.backgroundColor = penColor;
         } else {
