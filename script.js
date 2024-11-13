@@ -85,12 +85,7 @@ buttons.forEach((btn) => {
                 toggleShadingButton();
                 break;
             case TOGGLE_GRID_LINES_BTN:
-                document.querySelectorAll(".square-cell").forEach((cell) => {
-                    cell.classList.toggle("show-right-border-gray");
-                    cell.classList.toggle("show-top-border-gray");
-                });
-                grid.classList.toggle("show-left-border-gray");
-                grid.classList.toggle("show-bottom-border-gray");
+                toggleGridLinesButton();
                 break;
             case CHANGE_GRID_SIZE_BTN_ID:
                 //This button doesn't toggle anything, but rather requests an action.
@@ -203,4 +198,13 @@ function toggleShadingButton() {
         isRainbow = false;
         rainbowBtn.classList.remove("enabled");
     }
+}
+
+function toggleGridLinesButton(){
+    document.querySelectorAll(".square-cell").forEach((cell) => {
+        cell.classList.toggle("show-right-border-gray");
+        cell.classList.toggle("show-top-border-gray");
+    });
+    grid.classList.toggle("show-left-border-gray");
+    grid.classList.toggle("show-bottom-border-gray");
 }
