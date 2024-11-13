@@ -91,8 +91,6 @@ buttons.forEach((btn) => {
                 handleGridSizeChangeBtn();
                 break;
             case CLEAR_GRID_BTN_ID:
-                //This button doesn't toggle anything, but rather requests an action.
-                event.target.classList.toggle("enabled");
                 clearGrid();
                 break;
             default:
