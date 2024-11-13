@@ -12,17 +12,30 @@ const COLOR_GREEN = "green";
 const COLOR_RED = "red";
 const COLOR_GOLD = "gold";
 
+const STYLE_CLASS_HOVERED = "hovered";
+const STYLE_CLASS_MOUSEDOWN = "mousedown";
+const STYLE_CLASS_ENABLED = "enabled";
+const STYLE_CLASS_SELECTED = "selected";
+
+
+const STYLE_CLASS_GRAY_LEFT_BORDER = "show-left-border-gray";
+const STYLE_CLASS_GRAY_RIGHT_BORDER = "show-right-border-gray";
+const STYLE_CLASS_GRAY_TOP_BORDER = "show-top-border-gray";
+const STYLE_CLASS_GRAY_BOTTOM_BORDER = "show-bottom-border-gray";
+const STYLE_CLASS_SQUARE_CELL = "square-cell";
+const STYLE_CLASS_GRID = "grid";
+
 let initialDimension = 10; //Must take it from input later
 let isEraser = false;
 let isRainbow = false;
 let isShading = false;
 let penColor = COLOR_BLACK;
 
-const grid = document.querySelector(".grid");
+const grid = document.querySelector(`.${STYLE_CLASS_GRID}`);
 initGridCells(initialDimension);
 
 grid.addEventListener("mouseover", (event) => {
-    if (![...event.target.classList].includes("grid")) {
+    if (![...event.target.classList].includes(STYLE_CLASS_GRID)) {
         if (isEraser) {
             event.target.style.backgroundColor = "white";
         } else if (isRainbow) {
@@ -60,10 +73,10 @@ initColorItems();
 
 colorItems.forEach((colorItem) => {
     colorItem.addEventListener("mouseenter", () => {
-        colorItem.classList.add("hovered");
+        colorItem.classList.add(STYLE_CLASS_HOVERED);
     });
     colorItem.addEventListener("mouseleave", () => {
-        colorItem.classList.remove("hovered");
+        colorItem.classList.remove(STYLE_CLASS_HOVERED);
     });
     colorItem.addEventListener("click", () => {
         selectColorItem(colorItem.style.backgroundColor);
@@ -73,23 +86,23 @@ colorItems.forEach((colorItem) => {
 const buttons = [...document.querySelectorAll(".btn")];
 buttons.forEach((btn) => {
     btn.addEventListener("mouseenter", () => {
-        btn.classList.toggle("hovered");
+        btn.classList.toggle(STYLE_CLASS_HOVERED);
     })
     btn.addEventListener("mouseleave", () => {
-        btn.classList.toggle("hovered");
+        btn.classList.toggle(STYLE_CLASS_HOVERED);
         //Remove the mousedown effect if the user leaves the element
         //whilst pressing the mouse button.
-        btn.classList.remove("mousedown");
+        btn.classList.remove(STYLE_CLASS_MOUSEDOWN);
     })
     btn.addEventListener("mousedown", () => {
-        btn.classList.add("mousedown");
+        btn.classList.add(STYLE_CLASS_MOUSEDOWN);
     })
 })
 
 buttons.forEach((btn) => {
     btn.addEventListener("click", (event) => {
         //Remove the mousedown effect after the mouse is released.
-        event.target.classList.remove("mousedown");
+        event.target.classList.remove(STYLE_CLASS_MOUSEDOWN);
         switch (event.target.id) {
             case TOGGLE_ERASER_BTN_ID:
                 toggleEraserButton();
@@ -129,9 +142,9 @@ function changeGridSize(newDimension) {
 function selectColorItem(color) {
     colorItems.forEach((colorItem) => {
         if (colorItem.style.backgroundColor === color) {
-            colorItem.classList.add("selected");
+            colorItem.classList.add(STYLE_CLASS_SELECTED);
         } else {
-            colorItem.classList.remove("selected");
+            colorItem.classList.remove(STYLE_CLASS_SELECTED);
         }
     })
     penColor = color;
@@ -146,7 +159,7 @@ function initColorItems() {
 
 function initGridCells(initialDimension) {
     const cell = document.createElement("div");
-    cell.classList.add("square-cell");
+    cell.classList.add(STYLE_CLASS_SQUARE_CELL);
     cell.style.width = `calc(100%*(1/${initialDimension}))`;
 
     for (let i = 0; i < initialDimension * initialDimension; i++) {
@@ -165,13 +178,13 @@ function toggleRainbowButton() {
     const rainbowBtn = document.querySelector(`#${TOGGLE_RAINBOW_BTN_ID}`);
     const eraserBtn = document.querySelector(`#${TOGGLE_ERASER_BTN_ID}`);
     const shadingBtn = document.querySelector(`#${TOGGLE_SHADING_BTN_ID}`);
-    rainbowBtn.classList.toggle("enabled");
+    rainbowBtn.classList.toggle(STYLE_CLASS_ENABLED);
     isRainbow = !isRainbow;
     if (isRainbow) {
         isEraser = false;
-        eraserBtn.classList.remove("enabled");
+        eraserBtn.classList.remove(STYLE_CLASS_ENABLED);
         isShading = false;
-        shadingBtn.classList.remove("enabled");
+        shadingBtn.classList.remove(STYLE_CLASS_ENABLED);
     }
 }
 
@@ -179,13 +192,13 @@ function toggleEraserButton() {
     const rainbowBtn = document.querySelector(`#${TOGGLE_RAINBOW_BTN_ID}`);
     const eraserBtn = document.querySelector(`#${TOGGLE_ERASER_BTN_ID}`);
     const shadingBtn = document.querySelector(`#${TOGGLE_SHADING_BTN_ID}`);
-    eraserBtn.classList.toggle("enabled");
+    eraserBtn.classList.toggle(STYLE_CLASS_ENABLED);
     isEraser = !isEraser;
     if (isEraser) {
         isRainbow = false;
-        rainbowBtn.classList.remove("enabled");
+        rainbowBtn.classList.remove(STYLE_CLASS_ENABLED);
         isShading = false;
-        shadingBtn.classList.remove("enabled");
+        shadingBtn.classList.remove(STYLE_CLASS_ENABLED);
     }
 }
 
@@ -193,25 +206,25 @@ function toggleShadingButton() {
     const rainbowBtn = document.querySelector(`#${TOGGLE_RAINBOW_BTN_ID}`);
     const eraserBtn = document.querySelector(`#${TOGGLE_ERASER_BTN_ID}`);
     const shadingBtn = document.querySelector(`#${TOGGLE_SHADING_BTN_ID}`);
-    shadingBtn.classList.toggle("enabled");
+    shadingBtn.classList.toggle(STYLE_CLASS_ENABLED);
     isShading = !isShading;
     if (isShading) {
         isEraser = false;
-        eraserBtn.classList.remove("enabled");
+        eraserBtn.classList.remove(STYLE_CLASS_ENABLED);
         isRainbow = false;
-        rainbowBtn.classList.remove("enabled");
+        rainbowBtn.classList.remove(STYLE_CLASS_ENABLED);
     }
 }
 
 function toggleGridLinesButton() {
     const gridLinesBtn = document.querySelector(`#${TOGGLE_GRID_LINES_BTN}`);
-    gridLinesBtn.classList.toggle("enabled");
-    document.querySelectorAll(".square-cell").forEach((cell) => {
-        cell.classList.toggle("show-right-border-gray");
-        cell.classList.toggle("show-top-border-gray");
+    gridLinesBtn.classList.toggle(STYLE_CLASS_ENABLED);
+    document.querySelectorAll(`.${STYLE_CLASS_SQUARE_CELL}`).forEach((cell) => {
+        cell.classList.toggle(STYLE_CLASS_GRAY_RIGHT_BORDER);
+        cell.classList.toggle(STYLE_CLASS_GRAY_TOP_BORDER);
     });
-    grid.classList.toggle("show-left-border-gray");
-    grid.classList.toggle("show-bottom-border-gray");
+    grid.classList.toggle(STYLE_CLASS_GRAY_LEFT_BORDER);
+    grid.classList.toggle(STYLE_CLASS_GRAY_BOTTOM_BORDER);
 }
 
 
