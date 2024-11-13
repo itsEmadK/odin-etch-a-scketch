@@ -30,6 +30,10 @@ let isEraser = false;
 let isRainbow = false;
 let isShading = false;
 let penColor = COLOR_BLACK;
+let drawMode = false;
+
+window.addEventListener("mousedown", () => drawMode = true);
+window.addEventListener("mouseup", () => drawMode = false);
 
 const grid = document.querySelector(`.${STYLE_CLASS_GRID}`);
 initGridCells(initialDimension);
