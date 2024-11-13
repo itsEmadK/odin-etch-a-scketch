@@ -27,7 +27,7 @@ grid.addEventListener("mouseover", (event) => {
             const currentOpacity = +event.target.style.opacity;
             //the >0 part is because in the default mode, the opacity is not set and
             //therefore is 0, even when the cell is colored:
-            if (currentOpacity < 1 && currentOpacity > 0){
+            if (currentOpacity < 1 && currentOpacity > 0) {
                 event.target.style.opacity = `${currentOpacity + 0.1}`;
             }
             event.target.style.backgroundColor = penColor;
@@ -80,7 +80,7 @@ buttons.forEach((btn) => {
                 isEraser = !isEraser;
                 break;
             case TOGGLE_RAINBOW_BTN_ID:
-                isRainbow = !isRainbow;
+                toggleRainbowButton();
                 break;
             case TOGGLE_SHADING_BTN_ID:
                 isShading = !isShading;
@@ -162,4 +162,18 @@ function clearGrid() {
         cell.style.backgroundColor = "white";
         cell.style.opacity = "";
     })
+}
+
+function toggleRainbowButton() {
+    const rainbowBtn = document.querySelector(`#${TOGGLE_RAINBOW_BTN_ID}`);
+    const eraserBtn = document.querySelector(`#${TOGGLE_ERASER_BTN_ID}`);
+    const shadingBtn = document.querySelector(`#${TOGGLE_SHADING_BTN_ID}`);
+    rainbowBtn.classList.toggle("enabled");
+    isRainbow = !isRainbow;
+    if (isRainbow){
+        isEraser = false;
+        eraserBtn.classList.remove("enabled");
+        isShading = false;
+        shadingBtn.classList.remove("enabled");
+    }
 }
