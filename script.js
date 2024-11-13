@@ -27,7 +27,7 @@ grid.addEventListener("mouseover", (event) => {
             const currentOpacity = +event.target.style.opacity;
             //the >0 part is because in the default mode, the opacity is not set and
             //therefore is 0, even when the cell is colored:
-            if (currentOpacity < 1 && currentOpacity > 0) {
+            if (currentOpacity < 1) {
                 event.target.style.opacity = `${currentOpacity + 0.1}`;
             }
             event.target.style.backgroundColor = penColor;
