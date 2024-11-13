@@ -8,6 +8,9 @@
 body {
     background-color: #181818;
     padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 h1 {
@@ -43,6 +46,7 @@ h1 {
     justify-content: center;
     gap: 100px;
     flex-wrap: wrap;
+    flex: 1;
 }
 
 .buttons-container {
@@ -132,6 +136,14 @@ h1 {
     background-color: #61a7e8;
 }
 
+.footer {
+    color: white;
+    font-size: 12px;
+    display: flex;
+    margin-top: 50px;
+    padding-bottom: 5px;
+    justify-content: space-between;
+}
 
 .show-left-border-gray {
     border-left: 1px solid gray;
