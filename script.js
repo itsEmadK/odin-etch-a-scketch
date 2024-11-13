@@ -5,11 +5,18 @@ const TOGGLE_GRID_LINES_BTN = "toggle-grid-lines-btn";
 const CHANGE_GRID_SIZE_BTN_ID = "change-grid-size-btn";
 const CLEAR_GRID_BTN_ID = "clear-grid-btn";
 
+const COLOR_WHITE = "white";
+const COLOR_BLACK = "black";
+const COLOR_BLUE = "blue";
+const COLOR_GREEN = "green";
+const COLOR_RED = "red";
+const COLOR_GOLD = "gold";
+
 let initialDimension = 10; //Must take it from input later
 let isEraser = false;
 let isRainbow = false;
 let isShading = false;
-let penColor = "black";
+let penColor = COLOR_BLACK;
 
 const grid = document.querySelector(".grid");
 initGridCells(initialDimension);
@@ -41,7 +48,13 @@ grid.addEventListener("mouseover", (event) => {
 })
 
 
-const colors = ["black", "blue", "red", "green", "gold"];
+const colors = [
+    COLOR_BLACK,
+    COLOR_BLUE,
+    COLOR_RED,
+    COLOR_GREEN,
+    COLOR_GOLD];
+
 const colorItems = [...document.querySelectorAll(".color-item")];
 initColorItems();
 
@@ -128,7 +141,7 @@ function initColorItems() {
     for (let i = 0; i < 5; i++) { //TODO: remove the hardcoded value 5.
         colorItems[i].style.backgroundColor = colors[i];
     }
-    selectColorItem("black");
+    selectColorItem(COLOR_BLACK);
 }
 
 function initGridCells(initialDimension) {
@@ -143,7 +156,7 @@ function initGridCells(initialDimension) {
 
 function clearGrid() {
     grid.childNodes.forEach((cell) => {
-        cell.style.backgroundColor = "white";
+        cell.style.backgroundColor = COLOR_WHITE;
         cell.style.opacity = "";
     })
 }
@@ -154,7 +167,7 @@ function toggleRainbowButton() {
     const shadingBtn = document.querySelector(`#${TOGGLE_SHADING_BTN_ID}`);
     rainbowBtn.classList.toggle("enabled");
     isRainbow = !isRainbow;
-    if (isRainbow){
+    if (isRainbow) {
         isEraser = false;
         eraserBtn.classList.remove("enabled");
         isShading = false;
@@ -168,7 +181,7 @@ function toggleEraserButton() {
     const shadingBtn = document.querySelector(`#${TOGGLE_SHADING_BTN_ID}`);
     eraserBtn.classList.toggle("enabled");
     isEraser = !isEraser;
-    if (isEraser){
+    if (isEraser) {
         isRainbow = false;
         rainbowBtn.classList.remove("enabled");
         isShading = false;
@@ -182,7 +195,7 @@ function toggleShadingButton() {
     const shadingBtn = document.querySelector(`#${TOGGLE_SHADING_BTN_ID}`);
     shadingBtn.classList.toggle("enabled");
     isShading = !isShading;
-    if (isShading){
+    if (isShading) {
         isEraser = false;
         eraserBtn.classList.remove("enabled");
         isRainbow = false;
@@ -190,7 +203,7 @@ function toggleShadingButton() {
     }
 }
 
-function toggleGridLinesButton(){
+function toggleGridLinesButton() {
     const gridLinesBtn = document.querySelector(`#${TOGGLE_GRID_LINES_BTN}`);
     gridLinesBtn.classList.toggle("enabled");
     document.querySelectorAll(".square-cell").forEach((cell) => {
@@ -202,7 +215,7 @@ function toggleGridLinesButton(){
 }
 
 
-function handleGridSizeChangeBtn(){
+function handleGridSizeChangeBtn() {
     const newDimension = prompt("Please enter the new grids dimension:");
     if (newDimension !== null) {
         if (isNaN(+newDimension) || +newDimension <= 0) {
