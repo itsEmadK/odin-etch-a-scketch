@@ -72,7 +72,6 @@ buttons.forEach((btn) => {
 
 buttons.forEach((btn) => {
     btn.addEventListener("click", (event) => {
-        event.target.classList.toggle("enabled");
         //Remove the mousedown effect after the mouse is released.
         event.target.classList.remove("mousedown");
         switch (event.target.id) {
