@@ -31,6 +31,7 @@ let isRainbow = false;
 let isShading = false;
 let penColor = COLOR_BLACK;
 
+
 const grid = document.querySelector(`.${STYLE_CLASS_GRID}`);
 initGridCells(initialDimension);
 
