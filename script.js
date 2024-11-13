@@ -83,7 +83,7 @@ buttons.forEach((btn) => {
                 toggleRainbowButton();
                 break;
             case TOGGLE_SHADING_BTN_ID:
-                isShading = !isShading;
+                toggleShadingButton();
                 break;
             case TOGGLE_GRID_LINES_BTN:
                 document.querySelectorAll(".square-cell").forEach((cell) => {
@@ -189,5 +189,19 @@ function toggleEraserButton() {
         rainbowBtn.classList.remove("enabled");
         isShading = false;
         shadingBtn.classList.remove("enabled");
+    }
+}
+
+function toggleShadingButton() {
+    const rainbowBtn = document.querySelector(`#${TOGGLE_RAINBOW_BTN_ID}`);
+    const eraserBtn = document.querySelector(`#${TOGGLE_ERASER_BTN_ID}`);
+    const shadingBtn = document.querySelector(`#${TOGGLE_SHADING_BTN_ID}`);
+    shadingBtn.classList.toggle("enabled");
+    isShading = !isShading;
+    if (isShading){
+        isEraser = false;
+        eraserBtn.classList.remove("enabled");
+        isRainbow = false;
+        rainbowBtn.classList.remove("enabled");
     }
 }
