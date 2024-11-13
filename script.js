@@ -201,6 +201,8 @@ function toggleShadingButton() {
 }
 
 function toggleGridLinesButton(){
+    const gridLinesBtn = document.querySelector(`#${TOGGLE_GRID_LINES_BTN}`);
+    gridLinesBtn.classList.toggle("enabled");
     document.querySelectorAll(".square-cell").forEach((cell) => {
         cell.classList.toggle("show-right-border-gray");
         cell.classList.toggle("show-top-border-gray");
