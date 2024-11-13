@@ -4,6 +4,7 @@ const TOGGLE_SHADING_BTN_ID = "toggle-shading-btn";
 const TOGGLE_GRID_LINES_BTN = "toggle-grid-lines-btn";
 const CHANGE_GRID_SIZE_BTN_ID = "change-grid-size-btn";
 const CLEAR_GRID_BTN_ID = "clear-grid-btn";
+const TOGGLE_DRAW_ON_MOUSE_PRESS_BTN = "toggle-draw-on-mouse-press-btn";
 
 const COLOR_WHITE = "white";
 const COLOR_BLACK = "black";
@@ -30,34 +31,46 @@ let isEraser = false;
 let isRainbow = false;
 let isShading = false;
 let penColor = COLOR_BLACK;
+let drawOnPress = false;
+let shouldDraw = true;
 
 
 const grid = document.querySelector(`.${STYLE_CLASS_GRID}`);
+
+window.addEventListener("mousedown", (e) => {
+    shouldDraw = true;
+    e.preventDefault(); //Prevent the default drag and drop.
+});
+
+window.addEventListener("mouseup", () => shouldDraw = false);
+
 initGridCells(initialDimension);
 
 grid.addEventListener("mouseover", (event) => {
     if (![...event.target.classList].includes(STYLE_CLASS_GRID)) {
-        if (isEraser) {
-            event.target.style.backgroundColor = COLOR_WHITE;
-        } else if (isRainbow) {
-            const red = Math.random() * 100;
-            const green = Math.random() * 100;
-            const blue = Math.random() * 100;
-            event.target.style.backgroundColor = `rgb(${red}%,${green}%,${blue}%)`;
-        } else if (isShading) {
-            let currentOpacity = event.target.style.opacity;
-            currentOpacity = currentOpacity === '' ? 1 : +currentOpacity; //If no opacity is specified, it means the element has 100% opacity.
-            let shouldApplyShading =
-                event.target.style.backgroundColor !== penColor || //The element is not colored yet
-                currentOpacity < 1; // and if it is colored, it has room to increase the opacity.
+        if (!drawOnPress || (drawOnPress && shouldDraw)) {
+            if (isEraser) {
+                event.target.style.backgroundColor = COLOR_WHITE;
+            } else if (isRainbow) {
+                const red = Math.random() * 100;
+                const green = Math.random() * 100;
+                const blue = Math.random() * 100;
+                event.target.style.backgroundColor = `rgb(${red}%,${green}%,${blue}%)`;
+            } else if (isShading) {
+                let currentOpacity = event.target.style.opacity;
+                currentOpacity = currentOpacity === '' ? 1 : +currentOpacity; //If no opacity is specified, it means the element has 100% opacity.
+                let shouldApplyShading =
+                    event.target.style.backgroundColor !== penColor || //The element is not colored yet
+                    currentOpacity < 1; // and if it is colored, it has room to increase the opacity.
 
-            if (shouldApplyShading) {
-                event.target.style.opacity = `${+event.target.style.opacity + 0.1}`;
+                if (shouldApplyShading) {
+                    event.target.style.opacity = `${+event.target.style.opacity + 0.1}`;
+                }
+                event.target.style.backgroundColor = penColor;
+            } else {
+                event.target.style.backgroundColor = penColor;
+                event.target.style.opacity = "";
             }
-            event.target.style.backgroundColor = penColor;
-        } else {
-            event.target.style.backgroundColor = penColor;
-            event.target.style.opacity = "";
         }
     }
 })
@@ -123,6 +136,9 @@ buttons.forEach((btn) => {
                 break;
             case CLEAR_GRID_BTN_ID:
                 clearGrid();
+                break;
+            case TOGGLE_DRAW_ON_MOUSE_PRESS_BTN:
+                toggleDrawOnMousePressButton();
                 break;
             default:
                 break;
@@ -241,4 +257,10 @@ function handleGridSizeChangeBtn() {
             changeGridSize(newDimension);
         }
     }
+}
+
+function toggleDrawOnMousePressButton() {
+    drawOnPress = !drawOnPress;
+    const drawOnMouseBtn = document.querySelector(`#${TOGGLE_DRAW_ON_MOUSE_PRESS_BTN}`);
+    drawOnMouseBtn.classList.toggle(STYLE_CLASS_ENABLED);
 }
